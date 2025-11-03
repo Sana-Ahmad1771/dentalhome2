@@ -3,15 +3,19 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import {
-  FaHeartbeat,
-  FaFlask,
-  FaLaptopMedical,
-  FaCogs,
-  FaChartLine,
-  FaMicroscope,
-  FaGlobe,
-  FaHandshake,
+  FaSmile,
+  FaSyringe,
+  FaUserMd,
+  FaRegGrinBeam,
+  FaCrown,
+  FaTeethOpen,
+  FaTooth,
 } from "react-icons/fa";
+
+import {
+  GiToothbrush,
+} from "react-icons/gi";
+
 
 const MegaMenu = () => {
   const [open, setOpen] = useState(false);
@@ -22,88 +26,88 @@ const MegaMenu = () => {
     return () => document.body.classList.remove("backdrop-active");
   }, [open]);
 
-  // ✅ All 3 Mega Menu Categories
   const menuCategories = [
     {
-      title: "Ageless Beauty",
+      title: "General Dentistry",
       tagColor: "bg-primary text-white",
-      icon: FaHeartbeat,
-      basePath: "/ageless-beauty",
+      icon: FaTooth,
+      basePath: "/general-dentistry",
       description:
-        "Experience aesthetic treatments that enhance your natural beauty.",
+        "Comprehensive oral care focused on prevention and overall dental health.",
       items: [
         {
-          name: "Ultherapy",
-          slug: "ultherapy",
-          desc: "The non-invasive lift for the neck, chin, and brow — see the beauty of sound.",
-          icon: FaChartLine,
+          name: "Dental Checkup & Cleaning",
+          slug: "checkup-cleaning",
+          desc: "Regular exams and professional cleanings to keep your smile healthy.",
+          icon: GiToothbrush,
         },
         {
-          name: "Microneedling",
-          slug: "microneedling",
-          desc: "Stimulate collagen and achieve smoother, younger-looking skin.",
-          icon: FaFlask,
+          name: "Tooth Fillings",
+          slug: "tooth-fillings",
+          desc: "Repair cavities and restore tooth structure with safe, durable fillings.",
+          icon: FaUserMd,
         },
         {
-          name: "IPL Therapy",
-          slug: "ipl-therapy",
-          desc: "Target discoloration and sun damage for a clear, even skin tone.",
-          icon: FaLaptopMedical,
+          name: "Tooth Extraction",
+          slug: "tooth-extraction",
+          desc: "Gentle and precise extractions for damaged or decayed teeth.",
+          icon: FaSyringe,
         },
       ],
     },
     {
-      title: "Skin Rejuvenation",
+      title: "Cosmetic Dentistry",
       tagColor: "bg-secondary text-white",
-      icon: FaFlask,
-      basePath: "/skin-rejuvenation",
+      icon: FaSmile,
+      basePath: "/cosmetic-dentistry",
       description:
-        "Refresh and renew your skin with professional aesthetic care.",
+        "Enhance your confidence with aesthetic treatments designed for a perfect smile.",
       items: [
         {
-          name: "Hydrafacial",
-          slug: "hydrafacial",
-          desc: "Deeply cleanse, extract, and hydrate — glow instantly.",
-          icon: FaMicroscope,
+          name: "Teeth Whitening",
+          slug: "teeth-whitening",
+          desc: "Brighten your smile with safe and effective whitening treatments.",
+          icon: FaRegGrinBeam,
         },
         {
-          name: "Microdermabrasion",
-          slug: "microdermabrasion",
-          desc: "Exfoliate dead skin cells for a smoother, more radiant complexion.",
-          icon: FaCogs,
+          name: "Porcelain Veneers",
+          slug: "veneers",
+          desc: "Transform your smile with custom-made, natural-looking veneers.",
+          icon: FaCrown,
         },
         {
-          name: "Waxing & Permanent Makeup",
-          slug: "waxing-permanent-makeup",
-          desc: "Define your features and enjoy long-lasting smoothness.",
-          icon: FaGlobe,
+          name: "Smile Design",
+          slug: "smile-design",
+          desc: "Personalized smile makeovers using advanced digital design technology.",
+          icon: FaSmile,
         },
       ],
     },
     {
-      title: "Chelan Valley Spa",
+      title: "Restorative & Implants",
       tagColor: "bg-secondary/80 text-white",
-      icon: FaHandshake,
-      basePath: "/chelan-valley-spa",
-      description: "Relax, rejuvenate, and rediscover confidence in your skin.",
+      icon: FaCrown,
+      basePath: "/restorative-implants",
+      description:
+        "Restore your teeth’s function and beauty through advanced restorative care.",
       items: [
         {
-          name: "Our Philosophy",
-          slug: "our-philosophy",
-          desc: "Our goal is to enhance your natural beauty through advanced skincare.",
-          icon: FaHeartbeat,
+          name: "Dental Implants",
+          slug: "dental-implants",
+          desc: "Permanent tooth replacements that look and function like natural teeth.",
+          icon: FaTooth,
         },
         {
-          name: "Dermalogica Products",
-          slug: "dermalogica-products",
-          desc: "We use all Dermalogica skincare — grease-free and cruelty-free.",
-          icon: FaFlask,
+          name: "Crowns & Bridges",
+          slug: "crowns-bridges",
+          desc: "Rebuild and strengthen damaged or missing teeth with precision restorations.",
+          icon: FaCrown,
         },
         {
-          name: "Meet Nelly",
-          slug: "meet-nelly",
-          desc: "Your rejuvenation specialist dedicated to personalized care.",
-          icon: FaLaptopMedical,
+          name: "Dentures",
+          slug: "dentures",
+          desc: "Custom-fitted dentures designed for comfort, stability, and natural appearance.",
+          icon: FaTeethOpen,
         },
       ],
     },
@@ -117,7 +121,7 @@ const MegaMenu = () => {
     >
       {/* Dropdown Button */}
       <button className="py-1 text-body text-primary hover:text-secondary cursor-pointer flex items-center font-medium">
-        Explore Treatments <span className="ml-1 transition-transform">▾</span>
+        Our Treatments <span className="ml-1 transition-transform">▾</span>
       </button>
 
       <AnimatePresence>
@@ -125,7 +129,7 @@ const MegaMenu = () => {
           <>
             {/* Overlay */}
             <motion.div
-              className="fixed inset-0 top-20 bg-black/30 backdrop-blur-sm z-30"
+              className="fixed inset-0 top-60 bg-black/30 backdrop-blur-sm z-30"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -138,40 +142,18 @@ const MegaMenu = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 10 }}
               transition={{ duration: 0.25 }}
-              className="fixed left-0 w-full bg-[#F8F6F0] shadow-2xl border-t border-[#e4e0d4] z-50 overflow-hidden"
-              style={{ top: "80px" }}
+              className="fixed left-0 w-full bg-white shadow-2xl border-t border-[#e4e0d4] z-50 overflow-hidden"
+              style={{ top: "130px" }}
             >
-              {/* Background pattern */}
-              <div className="absolute inset-0 pointer-events-none">
-                <div
-                  className="absolute top-0 right-0 w-[700px] h-[700px] bg-[url('/images/pattern-megamenu.jpg')] bg-no-repeat bg-cover bg-top-right opacity-30"
-                  style={{
-                    maskImage:
-                      "linear-gradient(to bottom left, rgba(0,0,0,0.8) 20%, rgba(0,0,0,0) 80%)",
-                    WebkitMaskImage:
-                      "linear-gradient(to bottom left, rgba(0,0,0,0.8) 20%, rgba(0,0,0,0) 80%)",
-                  }}
-                ></div>
-              </div>
-
-              <div
-                className="max-w-[1600px] mx-auto px-6 lg:px-16 xl:px-24 py-12 overflow-y-auto max-h-[85vh]"
-                style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-              >
-                <style jsx>{`
-                  div::-webkit-scrollbar {
-                    display: none;
-                  }
-                `}</style>
-
+              <div className="max-w-[1600px] mx-auto px-6 lg:px-16 xl:px-24 py-12 overflow-y-auto max-h-[85vh]">
                 {/* Header */}
                 <div className="mb-10">
                   <h3 className="text-3xl font-bold text-primary mb-2">
-                    Discover Treatments
+                    Discover Dental Treatments
                   </h3>
                   <p className="text-dark/70 max-w-2xl leading-relaxed">
-                    Explore rejuvenation treatments designed to lift, brighten,
-                    and refresh your skin — revealing your timeless glow.
+                    Explore expert dental care services designed to restore your
+                    oral health and enhance your smile with confidence.
                   </p>
                 </div>
 
@@ -179,7 +161,6 @@ const MegaMenu = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-20">
                   {menuCategories.map((cat, i) => (
                     <div key={i} className="relative z-50 py-6">
-                      {/* Section Heading */}
                       <div
                         className={`inline-flex items-center gap-2 px-4 py-3 rounded-xl font-semibold text-lg mb-4 ${cat.tagColor}`}
                       >
@@ -198,7 +179,6 @@ const MegaMenu = () => {
                             whileHover={{ x: 5 }}
                             className="flex justify-between items-start border-b border-gray-300/70 pb-3 group"
                           >
-                            {/* ✅ Dynamic Link to Each Category's Page */}
                             <Link
                               href={`${cat.basePath}/${item.slug}`}
                               className="block w-full"
