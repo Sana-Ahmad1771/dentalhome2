@@ -1,26 +1,118 @@
 @import "tailwindcss";
 
+/* 🌿 Global Design System — Dental Clinic Website */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* ===== Core Brand Colors ===== */
+  --primary:  #00b6c9; /*aqua*/
+  --secondary: #204066; /* Deep Neutral Navy */
+  --accent: #ff8b5f; /* Elegant Tan Accent */
+  --muted: #ececea; /* Light Neutral Background */
+  --paragraph: #757f95;
+  --neutral: #acc5ca; /* Cool Soft Gray-Blue */
+  --highlight: #665955; /* Warm Deep Brown */
+  --dark: #333740;
+  --light: #ffffff;
+
+  /* ===== Extended UI Shades ===== */
+  --tone-1: #b59b8f;
+  --tone-2: #d5b79a;
+
+  /* ===== Font Stack ===== */
+  --font-sans: "Poppins", "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
+/* ===== Tailwind Inline Theme Tokens ===== */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary: #00b6c9; /* Soothing Aqua */
+  --color-primary-accent: #2380cc; /* Strong Sky Blue */
+  --color-secondary: #204066; /* Deep Neutral Navy */
+  --color-accent: #ff8b5f; /* Elegant Tan Accent */
+  --color-muted: #ececea; /* Light Neutral Background */
+  --color-paragraph: #757f95;
+  --color-neutral: #acc5ca; /* Cool Soft Gray-Blue */
+  --color-highlight: #665955; /* Warm Deep Brown */
+  --color-dark: #333740;
+  --color-light: #ffffff;
+
+  /* ===== Default Shades for Neutral UI Elements ===== */
+  --color-black-1: #0a0a0a;
+  --color-dark-1: #2e2e2e;
+  --color-dark-2: #3f3f3f;
+  --color-dark-3: #5b5b5b;
+  --color-gray-1: #bfbfbf;
+  --color-gray-2: #d9d9d9;
+  --color-gray-3: #e5e5e5;
+  --color-gray-4: #eeeeee;
+  --color-gray-5: #f5f5f5;
+  --color-white: #ffffff;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ===== Base Styles ===== */
+body {
+  --background: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ===== Shared Utilities ===== */
+.image-soft-overlay {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.image-soft-overlay::before,
+.image-soft-overlay::after {
+  content: "";
+  position: absolute;
+  width: 45%;
+  height: 45%;
+  background: rgba(255, 255, 255, 0.7);
+  pointer-events: none;
+  transition: all 0.8s ease-in-out;
+}
+
+.image-soft-overlay::after {
+  top: 0;
+  left: 0;
+  border-radius: 15px 0 0 0;
+}
+
+.image-soft-overlay::before {
+  bottom: 0;
+  right: 0;
+  border-radius: 0 0 15px 0;
+}
+
+.image-soft-overlay:hover::before,
+.image-soft-overlay:hover::after {
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+@media (max-width: 768px) {
+  .image-soft-overlay::before,
+  .image-soft-overlay::after {
+    width: 35%;
+    height: 35%;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Hide scrollbar (but still scrollable) */
+.hide-scrollbar {
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Background blur for active overlays (like Mega Menu) */
+body.backdrop-active main,
+body.backdrop-active section,
+body.backdrop-active footer {
+  filter: blur(12px);
+  transition: filter 0.3s ease;
+  pointer-events: none;
+  user-select: none;
 }
